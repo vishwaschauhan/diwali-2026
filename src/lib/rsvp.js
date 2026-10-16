@@ -26,8 +26,14 @@ export async function submitRsvp(data) {
   put('attending', data.attending === 'yes' ? 'Yes' : 'No')
   put('adults', String(data.attending === 'yes' ? data.adults : 0))
   put('children', String(data.attending === 'yes' ? data.children : 0))
-  put('dietary', data.dietary)
-  put('notes', data.notes)
+  if (fields.notes) {
+    put('dietary', data.dietary)
+    put('notes', data.notes)
+  } else {
+    // No Notes question mapped: keep the guest's note by adding it to the dietary answer.
+    const note = data.notes?.trim()
+    put('dietary', [data.dietary, note && `Note: ${note}`].filter(Boolean).join(' · '))
+  }
   await fetch(`https://docs.google.com/forms/d/e/${formId}/formResponse`, {
     method: 'POST',
     mode: 'no-cors',

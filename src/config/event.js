@@ -107,18 +107,20 @@ export const EVENT = {
      *                  Fill in `googleForm` below (see README for the 2-minute setup).
      *  'link'        — the RSVP buttons open `externalUrl` (any service).
      */
-    mode: 'demo',
+    mode: 'google-form',
 
     googleForm: {
       /** The long id from https://docs.google.com/forms/d/e/<THIS>/viewform */
-      formId: '',
+      formId: '1FAIpQLSfjDo4Sv72pkLItqJFacXdg_RsK6SAf0J0xTQOXb21X1V4I_w', // "Diwali 2026 RSVP"
       /** Map each field to its Google Form "entry.123456789" name. */
       fields: {
-        name: '', // e.g. 'entry.1111111111'
-        attending: '', // multiple choice: options must be exactly "Yes" / "No"
-        adults: '',
-        children: '',
-        dietary: '',
+        name: 'entry.895440208',
+        attending: 'entry.953592006', // multiple choice: options must be exactly "Yes" / "No"
+        adults: 'entry.1406806985',
+        children: 'entry.522131210',
+        dietary: 'entry.553122026',
+        // Notes code not known yet (it was blank in the pre-filled link), so notes
+        // are added to the dietary answer as "Note: …" until this is filled in.
         notes: '',
       },
     },
