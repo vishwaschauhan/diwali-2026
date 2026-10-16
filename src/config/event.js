@@ -27,7 +27,7 @@ export const EVENT = {
   title: 'Diwali Celebration 2026',
 
   /** Public URL where the site will live. Used for share links + Open Graph. */
-  siteUrl: '', // e.g. 'https://diwali2026.example.com/'
+  siteUrl: 'https://vishwaschauhan.github.io/diwali-2026/',
 
   // ------------------------------------------------------------------- hosts
   hosts: {
