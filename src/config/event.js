@@ -68,7 +68,7 @@ export const EVENT = {
     city: 'Pearland',
     state: 'TX',
     /** Full street address. Leave '' until confirmed. */
-    address: '', // e.g. '123 Example Ln, Pearland, TX 77584'
+    address: '2510 Scarlett Trace, Pearland, TX 77584',
 
     /**
      * Who can see the street address on the site:
@@ -78,7 +78,7 @@ export const EVENT = {
      *               readable from the page source without the passcode.
      *  'private'  — never shown; guests are told it arrives with RSVP follow-up.
      */
-    addressMode: 'passcode',
+    addressMode: 'public',
     /** Output of `npm run encrypt-address` (only used with 'passcode'). */
     encryptedAddress: null,
     /** Optional: override the Google Maps link instead of building one. */
