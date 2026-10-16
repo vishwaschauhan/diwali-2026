@@ -5,6 +5,7 @@ const I = ({ children, className = 'h-5 w-5', ...p }) => (
 export const Calendar = (p) => <I {...p}><rect x="3.5" y="5" width="17" height="15" rx="2.5" /><path d="M3.5 10h17M8 3v4M16 3v4" /></I>
 export const Clock = (p) => <I {...p}><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></I>
 export const Pin = (p) => <I {...p}><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z" /><circle cx="12" cy="10" r="2.4" /></I>
+export const Directions = (p) => <I {...p}><path d="M12 2.8 21.2 12 12 21.2 2.8 12z" /><path d="M9 14.5V12a1.5 1.5 0 0 1 1.5-1.5H15M13 8.5l2 2-2 2" /></I>
 export const Arrow = (p) => <I {...p}><path d="M5 12h14M13 6l6 6-6 6" /></I>
 export const ArrowDown = (p) => <I {...p}><path d="M12 5v14M6 13l6 6 6-6" /></I>
 export const Close = (p) => <I {...p}><path d="M6 6l12 12M18 6L6 18" /></I>

@@ -32,9 +32,10 @@ export default function Nav() {
   }, [open])
 
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-[background-color,backdrop-filter,border-color] duration-500 ${
-        scrolled ? 'border-b border-gold/15 bg-night/80 backdrop-blur-lg' : 'border-b border-transparent'
+        open ? 'border-b border-gold/15 bg-night' : scrolled ? 'border-b border-gold/15 bg-night/80 backdrop-blur-lg' : 'border-b border-transparent'
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6" aria-label="Main">
@@ -67,6 +68,7 @@ export default function Nav() {
           {open ? <Close className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </nav>
+    </header>
 
       <AnimatePresence>
         {open && (
@@ -76,7 +78,7 @@ export default function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-x-0 top-16 bottom-0 z-40 bg-night/97 backdrop-blur-xl md:hidden"
+            className="fixed inset-x-0 top-16 bottom-0 z-40 bg-night md:hidden"
           >
             <ul className="flex flex-col gap-1 px-6 pt-8">
               {NAV.map((n, i) => (
@@ -95,6 +97,6 @@ export default function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   )
 }

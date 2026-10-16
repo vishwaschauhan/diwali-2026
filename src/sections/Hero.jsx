@@ -5,7 +5,8 @@ import { formatDate, startLabel, tzAbbrev } from '../lib/time'
 import Diya from '../components/Diya'
 import Particles from '../components/Particles'
 import { Rangoli, Lantern } from '../components/Ornaments'
-import { Calendar, Clock, Pin, ArrowDown } from '../components/Icons'
+import { Calendar, Clock, Pin, ArrowDown, Directions } from '../components/Icons'
+import { mapsUrl } from '../lib/venue'
 
 const HEADLINE = '10 YEARS OF LIGHT'
 const ease = [0.22, 1, 0.36, 1]
@@ -96,7 +97,7 @@ export default function Hero() {
         <motion.ul {...fade(2.2)} className="mt-5 flex flex-wrap items-center justify-center gap-2 text-sm sm:mt-8 sm:gap-3" aria-label="Event details">
           <Detail icon={<Calendar className="h-4 w-4" />}>{dateText}</Detail>
           <Detail icon={<Clock className="h-4 w-4" />}>{timeText}</Detail>
-          <Detail icon={<Pin className="h-4 w-4" />}>{EVENT.venue.city}, Texas</Detail>
+          <LocationDetail />
         </motion.ul>
 
         <motion.div {...fade(2.4)} className="mt-6 flex w-full flex-row items-center justify-center gap-3 sm:mt-10 sm:w-auto sm:gap-4">
@@ -114,6 +115,28 @@ export default function Hero() {
         Scroll <ArrowDown className="h-4 w-4" />
       </motion.a>
     </section>
+  )
+}
+
+// Public address: the pill opens Google Maps directions. Otherwise it jumps to the venue section.
+function LocationDetail() {
+  const url = EVENT.venue.addressMode === 'public' ? mapsUrl(EVENT.venue.address) : null
+  const label = `${EVENT.venue.city}, Texas`
+  return (
+    <li>
+      <a
+        href={url || '#venue'}
+        {...(url ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        aria-label={url ? `${label}: get directions in Google Maps` : `${label}: venue details`}
+        className="flex items-center gap-2 rounded-full border border-gold/25 bg-white/[0.04] py-1.5 pl-3.5 pr-1.5 text-ivory/90 backdrop-blur-sm transition-colors hover:border-gold/60"
+      >
+        <span className="text-gold"><Pin className="h-4 w-4" /></span>
+        {label}
+        <span className="grid h-7 w-7 place-items-center rounded-full bg-gold text-night" aria-hidden="true">
+          <Directions className="h-4 w-4" />
+        </span>
+      </a>
+    </li>
   )
 }
 

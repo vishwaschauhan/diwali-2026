@@ -7,7 +7,6 @@ import Diya from '../components/Diya'
 
 export default function Welcome() {
   const first = photosFor(EVENT.firstYear)[0]
-  const hosts = EVENT.hosts.names.join(' & ')
 
   return (
     <section id="welcome" className="relative overflow-clip bg-ivory text-ink" aria-labelledby="welcome-title">
@@ -54,8 +53,7 @@ export default function Welcome() {
             </p>
           </Reveal>
           <Reveal delay={0.15} className="mt-8">
-            <p className="text-sm text-ink/60">{EVENT.hosts.signOff}</p>
-            <p className="mt-1 font-display text-4xl italic text-ruby">{hosts}</p>
+            <p className="font-display text-2xl italic text-ruby sm:text-3xl">{EVENT.hosts.signOff.replace(/,$/, '')}</p>
           </Reveal>
         </div>
       </div>
