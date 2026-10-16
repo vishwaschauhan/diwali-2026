@@ -7,7 +7,7 @@ import Diya from './Diya'
 export const NAV = [
   { id: 'welcome', label: 'Welcome' },
   { id: 'journey', label: 'Memories' },
-  { id: 'awaits', label: 'The Evening' },
+  { id: 'schedule', label: 'The Evening' },
   { id: 'venue', label: 'Venue' },
   { id: 'rsvp', label: 'RSVP' },
 ]

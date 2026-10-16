@@ -5,6 +5,9 @@ import { formatClock, tzAbbrev, formatDate } from '../lib/time'
 import { SectionHeading } from '../components/Reveal'
 import Reveal from '../components/Reveal'
 import { Rangoli } from '../components/Ornaments'
+import { DiyaLine, Aarti, Thali, Chai, Dholak, Dance } from '../components/Illustrations'
+
+const ICONS = { diya: DiyaLine, aarti: Aarti, thali: Thali, chai: Chai, music: Dholak, dance: Dance }
 
 export default function Schedule() {
   const reduce = useReducedMotion()
@@ -17,11 +20,16 @@ export default function Schedule() {
     <section id="schedule" className="grain relative overflow-clip bg-night py-24 sm:py-32" aria-labelledby="schedule-title">
       <Rangoli className="pointer-events-none absolute -right-40 top-10 w-[520px]" opacity={0.08} />
       <Rangoli className="pointer-events-none absolute -left-52 bottom-0 w-[460px]" opacity={0.06} />
-      <div className="relative mx-auto max-w-3xl px-4 sm:px-6">
+      <div className="relative mx-auto max-w-4xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="The plan, loosely"
           title={<span id="schedule-title">An Evening to Remember</span>}
-          intro={EVENT.date ? formatDate(EVENT.date) : 'Date to be announced'}
+          intro={
+            <>
+              <span className="block font-display text-2xl text-gold-pale">{EVENT.date ? formatDate(EVENT.date) : 'Date to be announced'}</span>
+              <span className="mt-2 block">Everything we love about Diwali, gathered under one roof for one very full evening.</span>
+            </>
+          }
         />
 
         <ol ref={ref} className="relative mt-14 sm:mt-20">
@@ -33,6 +41,7 @@ export default function Schedule() {
             aria-hidden="true"
           />
           {EVENT.schedule.map((item, i) => {
+            const Icon = ICONS[item.icon]
             const last = i === EVENT.schedule.length - 1
             const right = i % 2 === 1
             return (
@@ -46,17 +55,27 @@ export default function Schedule() {
                   <span className="absolute h-1.5 w-1.5 rotate-45 bg-gold-light" />
                 </span>
                 <div className={`${right ? 'sm:order-1 sm:text-right' : 'sm:order-3'}`}>
-                  <h3 className="font-display text-2xl text-ivory sm:text-3xl">{item.title}</h3>
-                  <p className="mt-1.5 leading-relaxed text-ivory/65">{item.note}</p>
+                  <div className={`flex items-center gap-3 ${right ? 'sm:flex-row-reverse' : ''}`}>
+                    {Icon && (
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/[0.04] text-gold shadow-[inset_0_0_0_1px_rgba(210,163,78,.3)]" aria-hidden="true">
+                        <Icon className="h-8 w-8" />
+                      </span>
+                    )}
+                    <h3 className="font-display text-2xl leading-tight text-ivory sm:text-3xl">{item.title}</h3>
+                  </div>
+                  <p className="mt-2.5 leading-relaxed text-ivory/70">{item.note}</p>
                 </div>
               </Reveal>
             )
           })}
         </ol>
 
-        <p className="mt-10 text-center text-sm text-ivory/50">
+        <p className="mx-auto mt-10 max-w-xl text-center text-ivory/75">
+          <span className="font-semibold text-gold">Dress code:</span> {EVENT.dressCode}
+        </p>
+        <p className="mt-4 text-center text-sm text-ivory/50">
           All times are {EVENT.timezoneLabel}{tz ? ` (${tz})` : ''}, {EVENT.venue.city}, Texas.
-          {!EVENT.startTimeConfirmed && ' Timings are tentative and will be confirmed with the date.'}
+          {!EVENT.startTimeConfirmed && ' Timings are tentative.'}
         </p>
       </div>
     </section>

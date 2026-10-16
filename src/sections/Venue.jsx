@@ -66,9 +66,10 @@ function AddressBlock({ address }) {
     <div>
       <p className="text-sm uppercase tracking-[0.2em] text-ivory/50">Address</p>
       <address className="mt-2 text-xl not-italic leading-relaxed text-ivory sm:text-2xl">{address}</address>
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-        {g && <a href={g} target="_blank" rel="noopener noreferrer" className="btn-gold">Get directions <Arrow className="h-4 w-4" /></a>}
-        {a && <a href={a} target="_blank" rel="noopener noreferrer" className="btn-ghost">Open in Apple Maps</a>}
+      <p className="mt-6 text-sm text-ivory/55">Get directions in</p>
+      <div className="mt-3 grid grid-cols-2 gap-3 sm:flex">
+        {g && <a href={g} target="_blank" rel="noopener noreferrer" className="btn-gold whitespace-nowrap px-4">Google Maps <Arrow className="h-4 w-4" /></a>}
+        {a && <a href={a} target="_blank" rel="noopener noreferrer" className="btn-ghost whitespace-nowrap px-4">Apple Maps <Arrow className="h-4 w-4" /></a>}
       </div>
     </div>
   )

@@ -17,12 +17,12 @@ Everything below is in **`src/config/event.js`**. Nothing else needs editing.
 
 | What | Field | Status now |
 |---|---|---|
-| Party date | `date: '2026-11-07'` | `null` → shows "Date to be announced", calendar buttons hidden |
+| Party date | `date` | Nov 14, 2026 |
 | Start time | `startTime: '18:30'` + `startTimeConfirmed: true` | 6:30 PM, labelled "tentative" |
-| Venue address | `venue.address` or `venue.encryptedAddress` | blank |
-| RSVP | `rsvp.mode` + `rsvp.googleForm` | `'demo'` (form works, sends nothing, clearly labelled) |
+| Venue address | `venue.address` | 2510 Scarlett Trace, Pearland, TX 77584 (public) |
+| RSVP | `rsvp.mode` + `rsvp.googleForm` | Google Form "Diwali 2026 RSVP" |
 | RSVP deadline | `rsvp.deadline: '2026-10-30'` | `null` → hidden |
-| Public URL | `siteUrl` | blank (needed for share links and the WhatsApp preview) |
+| Public URL | `siteUrl` | https://vishwaschauhan.github.io/diwali-2026/ |
 | Contact numbers | `contacts[].phone` / `whatsapp` | blank on purpose |
 
 The schedule is stored as **minutes after the start time**, so changing `startTime`

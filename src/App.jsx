@@ -4,7 +4,6 @@ import StickyRsvp from './components/StickyRsvp'
 import Hero from './sections/Hero'
 import Welcome from './sections/Welcome'
 import Journey from './sections/Journey'
-import Awaits from './sections/Awaits'
 import Schedule from './sections/Schedule'
 import LightDiya from './sections/LightDiya'
 import Rsvp from './sections/Rsvp'
@@ -23,7 +22,6 @@ export default function App() {
         <Hero />
         <Welcome />
         <Journey />
-        <Awaits />
         <Schedule />
         <LightDiya />
         <Rsvp />

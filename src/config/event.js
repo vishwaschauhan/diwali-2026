@@ -49,7 +49,7 @@ export const EVENT = {
 
   // ------------------------------------------------------------- date & time
   /** Party date, 'YYYY-MM-DD'. NOT the festival date (Diwali is Nov 8, 2026). */
-  date: null, // e.g. '2026-11-07'
+  date: '2026-11-14',
   /** 24-hour 'HH:MM'. The whole schedule below hangs off this one value. */
   startTime: '18:30',
   /** Set to true once the start time is final; until then it reads "tentative". */
@@ -127,12 +127,27 @@ export const EVENT = {
   },
 
   // ---------------------------------------------------------------- schedule
-  /** `offset` is minutes after `startTime`. Last item may be open-ended. */
+  /**
+   * `offset` is minutes after `startTime`. Last item may be open-ended.
+   * `icon` is one of: 'chai', 'aarti', 'thali', 'dance', 'diya', 'music'.
+   */
   schedule: [
-    { offset: 0, title: 'Arrival & appetizers', note: 'Come in, say hello, grab a plate. The appetizers wait for no one.' },
-    { offset: 45, title: 'Aarti & group photo', note: 'A moment of gratitude, followed by the annual attempt to fit everyone in one frame.' },
-    { offset: 60, title: 'Dinner & drinks', note: 'Homemade, generous, and served with zero judgement on seconds.' },
-    { offset: 120, title: 'Dance floor opens', note: 'Runs until your energy gets lost. Ours historically gets lost last.' },
+    {
+      offset: 0, icon: 'chai', title: 'Arrival & appetizers',
+      note: 'Come in, say hello, grab a plate and something to sip. The appetizers wait for no one.',
+    },
+    {
+      offset: 45, icon: 'aarti', title: 'Diyas, aarti & group photo',
+      note: 'Ten years in, and we still argue over who gets the matchbox. A few quiet minutes of gratitude, then the annual attempt to fit everyone in one frame (everyone insists they were not ready).',
+    },
+    {
+      offset: 60, icon: 'thali', title: 'Dinner & drinks',
+      note: 'Come hungry. Leaving hungry is not an option. Something warm, something cold, something festive, and zero judgement on seconds.',
+    },
+    {
+      offset: 120, icon: 'dance', title: 'Music & dance floor',
+      note: 'Songs, performances and a dance floor where talent is optional and enthusiasm is mandatory. Runs until your energy gets lost. Ours historically gets lost last.',
+    },
   ],
 
   // ------------------------------------------------------------ memory lane
