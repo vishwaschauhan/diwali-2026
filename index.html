@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>A Decade of Lights · Diwali Celebration 2026</title>
+    <meta name="description" content="You're invited to our 10th annual Diwali celebration in Pearland, Texas. Ten years of lighting diyas, making memories, and enthusiastically overestimating our dancing abilities." />
+    <meta name="theme-color" content="#11172B" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+
+    <!-- Open Graph / WhatsApp / iMessage preview.
+         Set og:url and the absolute og:image URL once the site has a domain
+         (WhatsApp requires an absolute https:// image URL). See README. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Diwali Celebration 2026" />
+    <meta property="og:title" content="You're Invited · A Decade of Lights" />
+    <meta property="og:description" content="Our 10th annual Diwali celebration. 10 years. Countless memories. One bright tradition." />
+    <meta property="og:image" content="./og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="A glowing brass diya on a midnight background with the words A Decade of Lights" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="You're Invited · A Decade of Lights" />
+    <meta name="twitter:description" content="Our 10th annual Diwali celebration in Pearland, Texas." />
+    <meta name="twitter:image" content="./og-image.jpg" />
+    <style>
+      /* Paint the night sky before JS loads, so there's never a white flash */
+      html, body { background: #0a0e1c; }
+      #boot { position: fixed; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, #2a2244, #0a0e1c 60%); transition: opacity .6s; }
+      #boot span { width: 14px; height: 22px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: radial-gradient(circle at 50% 70%, #fff8dc, #f2a93b 60%, transparent 70%); box-shadow: 0 0 40px 18px rgba(242,169,59,.35); }
+    </style>
+  </head>
+  <body>
+    <div id="root"><div id="boot" aria-hidden="true"><span></span></div></div>
+    <noscript>
+      <p style="color:#F6E9D2;font-family:Georgia,serif;text-align:center;padding:4rem 1rem">
+        You're invited to our 10th annual Diwali celebration. Please enable JavaScript to view the invitation.
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

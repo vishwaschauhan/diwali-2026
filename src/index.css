@@ -1,0 +1,119 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-night: #11172b;
+  --color-night-deep: #0a0e1c;
+  --color-night-soft: #1a2240;
+  --color-ruby: #853a46;
+  --color-ruby-deep: #5e2430;
+  --color-gold: #d2a34e;
+  --color-gold-light: #ecc97f;
+  --color-gold-pale: #f3dfb2;
+  --color-ivory: #f6e9d2;
+  --color-ivory-soft: #fbf4e6;
+  --color-saffron: #e8892c;
+  --color-marigold: #f2a93b;
+  --color-ink: #2a2233;
+
+  --font-display: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease-glow: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    -webkit-text-size-adjust: 100%;
+    background: var(--color-night);
+  }
+  body {
+    @apply bg-night text-ivory font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--color-gold); color: var(--color-night); }
+  :focus-visible {
+    outline: 2px solid var(--color-gold-light);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  img { -webkit-user-drag: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@utility eyebrow {
+  @apply font-sans text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-gold;
+}
+@utility display {
+  @apply font-display font-medium leading-[0.95] tracking-[-0.01em];
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold tracking-wide transition-[transform,box-shadow,background-color,color,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50;
+  min-height: 48px;
+}
+@utility btn-gold {
+  @apply btn text-night;
+  background: linear-gradient(135deg, #f0d08a 0%, #d2a34e 45%, #b8862f 100%);
+  box-shadow: 0 0 0 1px rgb(255 230 170 / 0.35) inset, 0 10px 30px -10px rgb(210 163 78 / 0.7);
+  &:hover { box-shadow: 0 0 0 1px rgb(255 230 170 / 0.5) inset, 0 14px 40px -8px rgb(232 170 70 / 0.85); transform: translateY(-1px); }
+}
+@utility btn-ghost {
+  @apply btn border border-gold/45 text-gold-pale hover:border-gold hover:bg-gold/10;
+}
+@utility btn-ruby {
+  @apply btn bg-ruby text-ivory hover:bg-ruby-deep;
+  box-shadow: 0 10px 30px -12px rgb(133 58 70 / 0.8);
+}
+@utility card-glass {
+  @apply rounded-3xl border border-gold/20 bg-night-soft/60 backdrop-blur-md;
+  box-shadow: 0 30px 80px -40px rgb(0 0 0 / 0.8), inset 0 1px 0 rgb(255 255 255 / 0.04);
+}
+@utility gold-text {
+  background: linear-gradient(180deg, #fbe6b4 0%, #e3b866 45%, #b98a35 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+@utility field {
+  @apply w-full rounded-2xl border border-ink/15 bg-white/70 px-4 py-3.5 text-base text-ink placeholder:text-ink/40 transition-colors focus:border-ruby focus:bg-white focus:outline-none;
+}
+
+.grain { position: relative; }
+.grain::after {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  opacity: 0.05; mix-blend-mode: overlay;
+}
+
+/* Flame flicker — only runs when motion is allowed */
+@keyframes flicker {
+  0%, 100% { transform: scale(1, 1) rotate(-1deg); }
+  25% { transform: scale(0.96, 1.05) rotate(1.5deg); }
+  50% { transform: scale(1.03, 0.97) rotate(-0.5deg); }
+  75% { transform: scale(0.98, 1.04) rotate(1deg); }
+}
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+.flame { transform-origin: 50% 90%; animation: flicker 2.4s ease-in-out infinite; }
+.glow-breathe { animation: glow-breathe 4s ease-in-out infinite; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+/* Mughal arch mask (matches <Arch/> inner line, 200x260 box) */
+.arch-mask {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 260' preserveAspectRatio='none'%3E%3Cpath d='M20 260 V 114 C 20 80, 46 64, 68 52 C 84 43, 94 33, 100 20 C 106 33, 116 43, 132 52 C 154 64, 180 80, 180 114 V 260 Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 260' preserveAspectRatio='none'%3E%3Cpath d='M20 260 V 114 C 20 80, 46 64, 68 52 C 84 43, 94 33, 100 20 C 106 33, 116 43, 132 52 C 154 64, 180 80, 180 114 V 260 Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
