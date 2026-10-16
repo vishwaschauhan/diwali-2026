@@ -119,9 +119,7 @@ export const EVENT = {
         adults: 'entry.1406806985',
         children: 'entry.522131210',
         dietary: 'entry.553122026',
-        // Notes code not known yet (it was blank in the pre-filled link), so notes
-        // are added to the dietary answer as "Note: …" until this is filled in.
-        notes: '',
+        notes: 'entry.1801866051',
       },
     },
 
