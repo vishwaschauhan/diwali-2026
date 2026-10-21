@@ -5,11 +5,11 @@ import { Menu, Close } from './Icons'
 import Diya from './Diya'
 
 export const NAV = [
-  { id: 'share', label: 'Date' },
-  { id: 'venue', label: 'Venue' },
   { id: 'schedule', label: 'The Evening' },
+  { id: 'venue', label: 'Venue' },
   { id: 'welcome', label: 'Our Note' },
   { id: 'journey', label: 'Memories' },
+  { id: 'share', label: 'Save the Date' },
   { id: 'rsvp', label: 'RSVP' },
 ]
 

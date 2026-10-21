@@ -22,12 +22,12 @@ export default function App() {
         {/* Practical details first, the memories and rituals after. */}
         <Hero />
         <Rsvp />
-        <Share />
-        <Venue />
         <Schedule />
+        <Venue />
         <Welcome />
         <Journey />
         <LightDiya />
+        <Share />
         <Finale />
       </main>
       <StickyRsvp />
