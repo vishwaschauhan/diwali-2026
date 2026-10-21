@@ -102,13 +102,13 @@ export default function Hero() {
 
         <motion.div {...fade(2.4)} className="mt-6 flex w-full flex-row items-center justify-center gap-3 sm:mt-10 sm:w-auto sm:gap-4">
           <a href="#rsvp" className="btn-gold flex-1 sm:flex-none sm:!px-9">RSVP Now</a>
-          <a href="#welcome" className="btn-ghost flex-1 sm:flex-none sm:!px-8"><span>Explore<span className="hidden sm:inline"> the Celebration</span></span></a>
+          <a href="#schedule" className="btn-ghost flex-1 sm:flex-none sm:!px-8"><span>See the<span className="hidden sm:inline"> evening's</span> plan</span></a>
         </motion.div>
       </div>
 
       <motion.a
-        href="#welcome"
-        aria-label="Scroll to the welcome note"
+        href="#rsvp"
+        aria-label="Scroll to RSVP"
         className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[0.65rem] uppercase tracking-[0.3em] text-ivory/45 sm:flex"
         {...(reduce ? {} : { initial: { opacity: 0 }, animate: { opacity: 1, y: [0, 6, 0] }, transition: { opacity: { delay: 3 }, y: { duration: 2.4, repeat: Infinity, delay: 3 } } })}
       >

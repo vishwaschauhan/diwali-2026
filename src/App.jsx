@@ -14,19 +14,20 @@ import Finale from './sections/Finale'
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <a href="#welcome" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-gold focus:px-4 focus:py-2 focus:text-night">
+      <a href="#rsvp" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-gold focus:px-4 focus:py-2 focus:text-night">
         Skip to content
       </a>
       <Nav />
       <main>
+        {/* Practical details first, the memories and rituals after. */}
         <Hero />
+        <Rsvp />
+        <Share />
+        <Venue />
+        <Schedule />
         <Welcome />
         <Journey />
-        <Schedule />
         <LightDiya />
-        <Rsvp />
-        <Venue />
-        <Share />
         <Finale />
       </main>
       <StickyRsvp />
