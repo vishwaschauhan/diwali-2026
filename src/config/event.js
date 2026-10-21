@@ -85,15 +85,13 @@ export const EVENT = {
     mapsUrl: '',
 
     parkingNotes: [
-      'Street parking only. Please keep driveways and fire hydrants clear (our neighbours are lovely and we would like to keep it that way).',
-      'Parking is limited, so arriving on time has its perks.',
-      'Carpooling is strongly encouraged. Fewer cars, more dancers.',
-      'Coming from out of town or need a hand? Reach out to us before the day.',
+      'Street parking only. Please keep driveways and hydrants clear.',
+      'Carpool if you can. Fewer cars, more dancers.',
     ],
-    lostLine: 'Still lost? Call us, or simply follow the sound of laughter and the smell of food.',
+    lostLine: 'Still lost? Follow the music.',
   },
 
-  dressCode: 'Festive best. Indian traditional attire is encouraged, but come as you are.',
+  dressCode: 'Festive best. Indian wear encouraged.',
 
   // -------------------------------------------------------------------- RSVP
   rsvp: {
@@ -134,19 +132,19 @@ export const EVENT = {
   schedule: [
     {
       offset: 0, icon: 'chai', title: 'Arrival & appetizers',
-      note: 'Come in, say hello, grab a plate and something to sip. The appetizers wait for no one.',
+      note: 'The appetizers wait for no one.',
     },
     {
       offset: 45, icon: 'aarti', title: 'Diyas, aarti & group photo',
-      note: 'Ten years in, and we still argue over who gets the matchbox. A few quiet minutes of gratitude, then the annual attempt to fit everyone in one frame (everyone insists they were not ready).',
+      note: 'Everyone in one frame. Nobody was ready.',
     },
     {
       offset: 60, icon: 'thali', title: 'Dinner & drinks',
-      note: 'Come hungry. Leaving hungry is not an option. Something warm, something cold, something festive, and zero judgement on seconds.',
+      note: 'Come hungry. Seconds are mandatory.',
     },
     {
       offset: 120, icon: 'dance', title: 'Music & dance floor',
-      note: 'Songs, performances and a dance floor where talent is optional and enthusiasm is mandatory. Runs until your energy gets lost. Ours historically gets lost last.',
+      note: 'Talent optional, enthusiasm mandatory.',
     },
   ],
 
