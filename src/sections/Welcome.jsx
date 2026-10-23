@@ -9,23 +9,25 @@ export default function Welcome() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(210,163,78,.18),transparent_55%)]" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-3xl px-4 pt-24 pb-20 sm:px-6 md:pt-32 md:pb-28">
-        <div>
+        <div className="text-center">
           <Reveal as="p" className="eyebrow !text-ruby">A note from your hosts</Reveal>
-          <Reveal as="h2" delay={0.05} id="welcome-title" className="display mt-4 text-[2.7rem] text-night sm:text-6xl">
-            Ten years ago, we lit <em className="text-ruby">a few diyas</em>.
+          <Reveal as="h2" delay={0.05} id="welcome-title" className="display mt-4 text-balance text-[2.6rem] text-night sm:text-6xl">
+            The Council of the <em className="text-ruby">Tenth Flame</em>
           </Reveal>
-          <RangoliDivider className="mt-6 h-5 w-48" tone="ruby" />
-          <Reveal delay={0.1} className="mt-6 space-y-5 text-[1.05rem] leading-[1.8] text-ink/80 sm:text-lg">
+          <Reveal as="p" delay={0.08} className="mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-ink/60 sm:text-sm">
+            A Fellowship Reunited. A Decade Remembered.
+          </Reveal>
+          <RangoliDivider className="mx-auto mt-6 h-5 w-48" tone="ruby" />
+          <Reveal delay={0.1} className="mt-6 font-display text-2xl italic leading-snug text-ruby sm:text-3xl">
+            <p>One flame to bring them together.</p>
+            <p>Ten years to keep it burning.</p>
+          </Reveal>
+          <Reveal delay={0.12} className="mx-auto mt-6 max-w-xl space-y-4 text-[1.05rem] leading-[1.75] text-ink/80 sm:text-lg">
             <p>
-              <span className="float-left mr-3 mt-1 font-display text-6xl leading-[0.8] text-ruby">T</span>
-              en years ago, we lit a few diyas and invited some friends over. Somehow, that turned into a tradition filled
-              with wonderful people, unforgettable evenings, endless laughter, and increasingly ambitious dance moves.
+              Ten years ago, we lit a few diyas and invited some friends over. Somehow that small gathering became a
+              fellowship: wonderful people, unforgettable evenings, and increasingly ambitious dance moves.
             </p>
-            <p>This year, we're celebrating a decade of it all.</p>
-            <p>
-              Come dressed in your festive best, bring your brightest smiles, and leave some room for dessert.
-              We're making another memory together.
-            </p>
+            <p>Come in your festive best, and leave room for second dinner.</p>
           </Reveal>
           <Reveal delay={0.15} className="mt-8">
             <p className="font-display text-2xl italic text-ruby sm:text-3xl">{EVENT.hosts.signOff.replace(/,$/, '')}</p>

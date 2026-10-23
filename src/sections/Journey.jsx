@@ -52,8 +52,8 @@ export default function Journey() {
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow={`${EVENT.firstYear} — ${EVENT.year}`}
-          title={<span id="journey-title">The Journey of a Thousand Diyas</span>}
-          intro="Ten chapters, one tradition. Tap a year to wander back through the evenings that brought us here."
+          title={<span id="journey-title">The Fellowship of the Diyas</span>}
+          intro="Ten years, one fellowship. Pick a year and journey back."
         />
 
         {/* ---------------------------------------------------- Year rail */}
