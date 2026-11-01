@@ -52,7 +52,9 @@ function Hero() {
 
   const fade = (delay, y = 18) =>
     reduce ? {} : { initial: { opacity: 0, y }, animate: { opacity: 1, y: 0 }, transition: { duration: 1, delay, ease } }
-  const eyebrow = HOSTS.toUpperCase()
+  const eyebrow = P.eyebrow.toUpperCase()
+  const words = P.title.split(' ')
+  const last = words.pop()
 
   return (
     <section id="top" className="grain relative isolate flex min-h-[100svh] items-center overflow-hidden bg-night-deep pb-10 pt-16" aria-labelledby="hero-title">
@@ -78,7 +80,7 @@ function Hero() {
           <Diya lit={lit} className="h-24 w-24 sm:h-36 sm:w-36" glow={1.3} animate={!reduce} />
         </motion.div>
 
-        <p className="mt-2 flex items-center gap-3 sm:mt-3 sm:gap-4" aria-label={HOSTS}>
+        <p className="mt-2 flex items-center gap-3 sm:mt-3 sm:gap-4" aria-label={P.eyebrow}>
           <motion.span aria-hidden="true" className="h-px w-8 bg-gradient-to-r from-transparent to-gold sm:w-16" {...fade(1.2, 0)} />
           <span aria-hidden="true" className="font-sans text-[0.78rem] font-semibold tracking-[0.42em] text-gold sm:text-base">
             {eyebrow.split('').map((ch, i) => (
@@ -92,16 +94,12 @@ function Hero() {
         </p>
 
         <motion.h1 id="hero-title" {...fade(1.55, 24)} className="display mt-4 text-[3.6rem] italic text-ivory sm:mt-6 sm:text-8xl lg:text-[8.5rem]">
-          You're <span className="gold-text pr-2">Invited</span>
+          {words.join(' ')} <span className="gold-text pr-2">{last}</span>
         </motion.h1>
 
-        <motion.p {...fade(1.8)} className="mt-3 font-display text-2xl text-gold-pale sm:mt-4 sm:text-4xl">
+        <motion.p {...fade(1.8)} className="mt-3 max-w-2xl text-balance font-display text-2xl text-gold-pale sm:mt-4 sm:text-4xl">
           {P.headline}
         </motion.p>
-
-        <motion.div {...fade(2)} className="mt-4 max-w-xl space-y-2 text-[0.95rem] leading-relaxed text-ivory/75 sm:mt-6 sm:text-lg">
-          {P.note.map((line) => <p key={line}>{line}</p>)}
-        </motion.div>
 
         <motion.ul {...fade(2.2)} className="mt-5 flex flex-wrap items-center justify-center gap-2 text-sm sm:mt-8 sm:gap-3" aria-label="Event details">
           <Detail icon={<Calendar className="h-4 w-4" />}>{formatDate(EVENT.date)}</Detail>

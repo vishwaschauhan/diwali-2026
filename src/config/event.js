@@ -156,11 +156,10 @@ export const EVENT = {
    */
   personalInvite: {
     path: 'personal/',
-    headline: 'to celebrate Diwali with us',
-    note: [
-      "Diwali is our favourite evening of the year, and we'd love to share it with you.",
-      'Come for the lights, stay for dinner, and leave whenever the music lets you.',
-    ],
+    // Hero, top to bottom: small gold line, big title (last word in gold), subtitle.
+    eyebrow: 'Shubh Deepavali',
+    title: 'Join Us',
+    headline: 'Garima & Vishwas would love to celebrate Diwali with you',
     signOff: 'With love,',
   },
 
