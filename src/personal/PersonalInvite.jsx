@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { MotionConfig, motion, useReducedMotion } from 'framer-motion'
 import { EVENT } from '../config/event'
-import { formatDate, startLabel } from '../lib/time'
+import { formatClock, formatDate } from '../lib/time'
 import { mapsUrl } from '../lib/venue'
 import Diya from '../components/Diya'
 import Particles from '../components/Particles'
@@ -103,7 +103,7 @@ function Hero() {
 
         <motion.ul {...fade(2.2)} className="mt-5 flex flex-wrap items-center justify-center gap-2 text-sm sm:mt-8 sm:gap-3" aria-label="Event details">
           <Detail icon={<Calendar className="h-4 w-4" />}>{formatDate(EVENT.date)}</Detail>
-          <Detail icon={<Clock className="h-4 w-4" />}>{startLabel()}</Detail>
+          <Detail icon={<Clock className="h-4 w-4" />}>{formatClock(EVENT.startTime)}</Detail>
           <LocationDetail />
         </motion.ul>
 
