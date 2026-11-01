@@ -156,7 +156,7 @@ export const EVENT = {
    */
   personalInvite: {
     path: 'personal/',
-    headline: 'invite you to celebrate Diwali with us',
+    headline: 'to celebrate Diwali with us',
     note: [
       "Diwali is our favourite evening of the year, and we'd love to share it with you.",
       'Come for the lights, stay for dinner, and leave whenever the music lets you.',

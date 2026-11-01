@@ -9,7 +9,11 @@ import { Pin, Car, Lock, Arrow, Phone } from '../components/Icons'
 import { Arch } from '../components/Ornaments'
 import Diya from '../components/Diya'
 
-export default function Venue() {
+/**
+ * `personal` (used by the personal invite) shows only the address card:
+ * no venue name and no parking notes.
+ */
+export default function Venue({ personal = false }) {
   const address = useAddress()
   const v = EVENT.venue
 
@@ -22,23 +26,27 @@ export default function Venue() {
           title={<span id="venue-title">Find Your Way to the Lights</span>}
         />
 
-        <div className="mt-14 grid gap-6 lg:mt-20 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className={`mt-14 grid gap-6 lg:mt-20 ${personal ? 'mx-auto max-w-2xl' : 'lg:grid-cols-[1.1fr_0.9fr]'}`}>
           {/* Address card */}
           <Reveal className="card-glass relative overflow-clip p-7 sm:p-10">
             <Arch className="pointer-events-none absolute -right-10 -top-6 h-[120%] w-64 opacity-[0.12]" />
             <div className="relative">
-              <p className="eyebrow">The venue</p>
-              <h3 className="mt-3 font-display text-4xl text-ivory sm:text-5xl">{v.title}</h3>
-              <p className="mt-2 flex items-center gap-2 text-ivory/70"><Pin className="h-4 w-4 text-gold" /> {v.city}, Texas</p>
+              {!personal && (
+                <>
+                  <p className="eyebrow">The venue</p>
+                  <h3 className="mt-3 font-display text-4xl text-ivory sm:text-5xl">{v.title}</h3>
+                  <p className="mt-2 flex items-center gap-2 text-ivory/70"><Pin className="h-4 w-4 text-gold" /> {v.city}, Texas</p>
+                </>
+              )}
 
-              <div className="mt-8">
+              <div className={personal ? '' : 'mt-8'}>
                 {address ? <AddressBlock address={address} /> : <AddressPending />}
               </div>
             </div>
           </Reveal>
 
           {/* Parking & logistics */}
-          <Reveal delay={0.1} className="rounded-3xl border border-gold/15 bg-white/[0.03] p-7 sm:p-10">
+          {!personal && <Reveal delay={0.1} className="rounded-3xl border border-gold/15 bg-white/[0.03] p-7 sm:p-10">
             <div className="flex items-center gap-3">
               <span className="grid h-11 w-11 place-items-center rounded-full bg-gold/10 text-gold"><Car /></span>
               <h3 className="font-display text-3xl text-ivory">Parking & arrival</h3>
@@ -52,7 +60,7 @@ export default function Venue() {
               ))}
             </ul>
             <p className="mt-8 border-t border-gold/15 pt-6 font-display text-xl italic text-gold-pale">{v.lostLine}</p>
-          </Reveal>
+          </Reveal>}
         </div>
       </div>
     </section>
