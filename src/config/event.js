@@ -148,6 +148,22 @@ export const EVENT = {
     },
   ],
 
+  // -------------------------------------------------------- personal invite
+  /**
+   * The minimalist page at <siteUrl>personal/ for friends outside the yearly
+   * tradition. Same date, schedule, venue and RSVP form as the main site;
+   * only the wording below differs. No "tenth annual" framing here.
+   */
+  personalInvite: {
+    path: 'personal/',
+    headline: 'invite you to celebrate Diwali with us',
+    note: [
+      "Diwali is our favourite evening of the year, and we'd love to share it with you.",
+      'Come for the lights, stay for dinner, and leave whenever the music lets you.',
+    ],
+    signOff: 'With love,',
+  },
+
   // ------------------------------------------------------------ memory lane
   /**
    * One entry per year. Photos are picked up automatically from

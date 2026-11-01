@@ -7,16 +7,25 @@ const pad = (n) => String(n).padStart(2, '0')
 const utcStamp = (d) =>
   `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}T${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}00Z`
 
-function details() {
-  const lines = [
-    `${EVENT.theme}: our ${EVENT.edition}th annual Diwali celebration.`,
-    EVENT.dressCode,
-  ]
-  if (EVENT.siteUrl) lines.push(`Invitation & RSVP: ${EVENT.siteUrl}`)
+/**
+ * Wording for calendar entries. Pages with their own voice (e.g. the personal
+ * invite) pass `copy` = { summary, intro, url } to override the defaults.
+ */
+const DEFAULT_COPY = {
+  summary: `${EVENT.title} · ${EVENT.theme}`,
+  intro: `${EVENT.theme}: our ${EVENT.edition}th annual Diwali celebration.`,
+  url: EVENT.siteUrl,
+}
+const withDefaults = (copy) => ({ ...DEFAULT_COPY, ...copy })
+
+function details(copy) {
+  const c = withDefaults(copy)
+  const lines = [c.intro, EVENT.dressCode]
+  if (c.url) lines.push(`Invitation & RSVP: ${c.url}`)
   return lines.join('\n')
 }
 
-const summary = () => `${EVENT.title} · ${EVENT.theme}`
+const summary = (copy) => withDefaults(copy).summary
 
 /** Location text safe for calendars: full address only when it is public. */
 const location = (address) => address || publicLocation()
@@ -25,30 +34,30 @@ export function calendarReady() {
   return Boolean(eventStart())
 }
 
-export function googleCalendarUrl(address) {
+export function googleCalendarUrl(address, copy) {
   const s = eventStart(), e = eventEnd()
   if (!s) return null
   const p = new URLSearchParams({
     action: 'TEMPLATE',
-    text: summary(),
+    text: summary(copy),
     dates: `${utcStamp(s)}/${utcStamp(e)}`,
-    details: details(),
+    details: details(copy),
     location: location(address),
     ctz: EVENT.timezone,
   })
   return `https://calendar.google.com/calendar/render?${p}`
 }
 
-export function outlookCalendarUrl(address) {
+export function outlookCalendarUrl(address, copy) {
   const s = eventStart(), e = eventEnd()
   if (!s) return null
   const p = new URLSearchParams({
     path: '/calendar/action/compose',
     rru: 'addevent',
-    subject: summary(),
+    subject: summary(copy),
     startdt: s.toISOString(),
     enddt: e.toISOString(),
-    body: details(),
+    body: details(copy),
     location: location(address),
   })
   return `https://outlook.live.com/calendar/0/deeplink/compose?${p}`
@@ -68,7 +77,7 @@ const fold = (line) => {
   return out.join('\r\n')
 }
 
-export function buildIcs(address) {
+export function buildIcs(address, copy) {
   const s = eventStart(), e = eventEnd()
   if (!s) return null
   const lines = [
@@ -82,10 +91,10 @@ export function buildIcs(address) {
     `DTSTAMP:${utcStamp(new Date())}`,
     `DTSTART:${utcStamp(s)}`,
     `DTEND:${utcStamp(e)}`,
-    `SUMMARY:${icsEscape(summary())}`,
-    `DESCRIPTION:${icsEscape(details())}`,
+    `SUMMARY:${icsEscape(summary(copy))}`,
+    `DESCRIPTION:${icsEscape(details(copy))}`,
     `LOCATION:${icsEscape(location(address))}`,
-    ...(EVENT.siteUrl ? [`URL:${EVENT.siteUrl}`] : []),
+    ...(withDefaults(copy).url ? [`URL:${withDefaults(copy).url}`] : []),
     'BEGIN:VALARM',
     'ACTION:DISPLAY',
     'DESCRIPTION:Diwali celebration tomorrow!',
@@ -97,8 +106,8 @@ export function buildIcs(address) {
   return lines.map(fold).join('\r\n') + '\r\n'
 }
 
-export function downloadIcs(address) {
-  const ics = buildIcs(address)
+export function downloadIcs(address, copy) {
+  const ics = buildIcs(address, copy)
   if (!ics) return
   const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' })
   const url = URL.createObjectURL(blob)
