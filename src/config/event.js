@@ -159,7 +159,7 @@ export const EVENT = {
     // Hero, top to bottom: small gold line, big title (last word in gold), subtitle.
     eyebrow: 'Shubh Deepavali',
     title: 'Join Us',
-    headline: 'Garima & Vishwas would love to celebrate Diwali with you',
+    headline: 'for a Diwali evening',
     signOff: 'With love,',
   },
 
