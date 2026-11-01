@@ -9,7 +9,11 @@ import { DiyaLine, Aarti, Thali, Chai, Dholak, Dance } from '../components/Illus
 
 const ICONS = { diya: DiyaLine, aarti: Aarti, thali: Thali, chai: Chai, music: Dholak, dance: Dance }
 
-export default function Schedule() {
+/**
+ * `personal` (used by the personal invite) hides the dress code and the
+ * time-zone line, since those guests are all local.
+ */
+export default function Schedule({ personal = false }) {
   const reduce = useReducedMotion()
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 75%', 'end 60%'] })
@@ -65,13 +69,19 @@ export default function Schedule() {
           })}
         </ol>
 
-        <p className="mx-auto mt-8 max-w-xl text-center text-ivory/75">
-          <span className="font-semibold text-gold">Dress code:</span> {EVENT.dressCode}
-        </p>
-        <p className="mt-4 text-center text-sm text-ivory/50">
-          All times are {EVENT.timezoneLabel}{tz ? ` (${tz})` : ''}, {EVENT.venue.city}, Texas.
-          {!EVENT.startTimeConfirmed && ' Timings are tentative.'}
-        </p>
+        {personal ? (
+          !EVENT.startTimeConfirmed && <p className="mt-8 text-center text-sm text-ivory/50">Timings are tentative.</p>
+        ) : (
+          <>
+            <p className="mx-auto mt-8 max-w-xl text-center text-ivory/75">
+              <span className="font-semibold text-gold">Dress code:</span> {EVENT.dressCode}
+            </p>
+            <p className="mt-4 text-center text-sm text-ivory/50">
+              All times are {EVENT.timezoneLabel}{tz ? ` (${tz})` : ''}, {EVENT.venue.city}, Texas.
+              {!EVENT.startTimeConfirmed && ' Timings are tentative.'}
+            </p>
+          </>
+        )}
       </div>
     </section>
   )

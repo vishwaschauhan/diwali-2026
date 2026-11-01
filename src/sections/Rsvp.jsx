@@ -14,7 +14,8 @@ import { Arrow, Check } from '../components/Icons'
 const DIETARY = ['Vegetarian', 'Vegan', 'Jain', 'Eggless', 'Gluten-free', 'Nut allergy']
 const EMPTY = { name: '', attending: '', adults: 2, children: 0, dietary: [], notes: '' }
 
-export default function Rsvp() {
+/** `calendarCopy` overrides the calendar-entry wording (see lib/calendar). */
+export default function Rsvp({ calendarCopy }) {
   const mode = rsvpMode()
   const closed = rsvpClosed()
   const deadline = EVENT.rsvp.deadline ? formatDate(EVENT.rsvp.deadline, { weekday: 'long', month: 'long', day: 'numeric' }) : null
@@ -31,7 +32,7 @@ export default function Rsvp() {
         />
 
         <Reveal delay={0.1} className="mt-12 sm:mt-16">
-          {closed ? <Closed /> : mode === 'link' ? <ExternalRsvp /> : <RsvpForm demo={mode === 'demo'} />}
+          {closed ? <Closed /> : mode === 'link' ? <ExternalRsvp /> : <RsvpForm demo={mode === 'demo'} calendarCopy={calendarCopy} />}
         </Reveal>
       </div>
     </section>
@@ -72,7 +73,7 @@ function ExternalRsvp() {
   )
 }
 
-function RsvpForm({ demo }) {
+function RsvpForm({ demo, calendarCopy }) {
   const reduce = useReducedMotion()
   const address = useAddress()
   const uid = useId()
@@ -113,7 +114,7 @@ function RsvpForm({ demo }) {
   }
 
   if (status === 'done' && result) {
-    return <Confirmation result={result} address={address} onReset={() => { setData(EMPTY); setStatus('idle'); setResult(null) }} />
+    return <Confirmation result={result} address={address} calendarCopy={calendarCopy} onReset={() => { setData(EMPTY); setStatus('idle'); setResult(null) }} />
   }
 
   const yes = data.attending === 'yes'
@@ -285,7 +286,7 @@ function Stepper({ id, label, hint, value, min, max, onChange }) {
   )
 }
 
-function Confirmation({ result, address, onReset }) {
+function Confirmation({ result, address, calendarCopy, onReset }) {
   const reduce = useReducedMotion()
   const yes = result.attending === 'yes'
   const first = result.name.trim().split(/\s+/)[0]
@@ -317,7 +318,7 @@ function Confirmation({ result, address, onReset }) {
           {yes && (
             <div className="mx-auto mt-8 max-w-lg text-left">
               <p className="mb-3 text-center text-xs uppercase tracking-[0.25em] text-gold">Add it to your calendar</p>
-              <CalendarButtons address={address} />
+              <CalendarButtons address={address} copy={calendarCopy} />
             </div>
           )}
           <button type="button" onClick={onReset} className="mt-8 min-h-11 text-sm text-ivory/55 underline underline-offset-4 hover:text-ivory">

@@ -148,6 +148,21 @@ export const EVENT = {
     },
   ],
 
+  // -------------------------------------------------------- personal invite
+  /**
+   * The minimalist page at <siteUrl>diwali-invite-2026/ for friends outside the yearly
+   * tradition. Same date, schedule, venue and RSVP form as the main site;
+   * only the wording below differs. No "tenth annual" framing here.
+   */
+  personalInvite: {
+    path: 'diwali-invite-2026/',
+    // Hero, top to bottom: small gold line, big title (last word in gold), subtitle.
+    eyebrow: 'Shubh Deepavali',
+    title: 'Join Us',
+    headline: 'Garima & Vishwas would love to celebrate Diwali with you',
+    signOff: 'With love,',
+  },
+
   // ------------------------------------------------------------ memory lane
   /**
    * One entry per year. Photos are picked up automatically from

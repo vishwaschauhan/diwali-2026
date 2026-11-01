@@ -11,7 +11,7 @@ const shareText = () =>
   `You're invited to our ${EVENT.edition}th annual Diwali celebration: ${EVENT.theme}. ✨🪔`
 
 /** Calendar buttons. `address` is the unlocked full address, if any. */
-export function CalendarButtons({ address, tone = 'dark' }) {
+export function CalendarButtons({ address, tone = 'dark', copy }) {
   const ready = calendarReady()
   const cls = tone === 'dark'
     ? 'border-gold/30 text-ivory hover:border-gold hover:bg-gold/10'
@@ -28,9 +28,9 @@ export function CalendarButtons({ address, tone = 'dark' }) {
   const btn = `flex min-h-12 items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-sm font-medium transition-colors ${cls}`
   return (
     <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-      <a className={btn} href={googleCalendarUrl(address)} target="_blank" rel="noopener noreferrer">Google Calendar</a>
-      <button type="button" className={btn} onClick={() => downloadIcs(address)}>Apple Calendar (.ics)</button>
-      <a className={btn} href={outlookCalendarUrl(address)} target="_blank" rel="noopener noreferrer">Outlook</a>
+      <a className={btn} href={googleCalendarUrl(address, copy)} target="_blank" rel="noopener noreferrer">Google Calendar</a>
+      <button type="button" className={btn} onClick={() => downloadIcs(address, copy)}>Apple Calendar (.ics)</button>
+      <a className={btn} href={outlookCalendarUrl(address, copy)} target="_blank" rel="noopener noreferrer">Outlook</a>
     </div>
   )
 }
