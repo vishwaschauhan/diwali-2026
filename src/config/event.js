@@ -150,12 +150,12 @@ export const EVENT = {
 
   // -------------------------------------------------------- personal invite
   /**
-   * The minimalist page at <siteUrl>personal/ for friends outside the yearly
+   * The minimalist page at <siteUrl>diwali-invite-2026/ for friends outside the yearly
    * tradition. Same date, schedule, venue and RSVP form as the main site;
    * only the wording below differs. No "tenth annual" framing here.
    */
   personalInvite: {
-    path: 'personal/',
+    path: 'diwali-invite-2026/',
     // Hero, top to bottom: small gold line, big title (last word in gold), subtitle.
     eyebrow: 'Shubh Deepavali',
     title: 'Join Us',

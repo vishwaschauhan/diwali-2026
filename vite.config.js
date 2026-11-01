@@ -6,7 +6,7 @@ import { defineConfig } from 'vite'
 // base: './' keeps every asset path relative, so the build works from any
 // folder or sub-path (GitHub Pages, Netlify, a shared preview link, etc.).
 // Two pages: the main invitation (index.html) and the minimalist personal
-// invite (personal/index.html, served at <site>/personal/).
+// invite (diwali-invite-2026/index.html, served at <site>/diwali-invite-2026/).
 export default defineConfig({
   base: './',
   plugins: [react(), tailwindcss()],
@@ -14,7 +14,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
-        personal: fileURLToPath(new URL('./personal/index.html', import.meta.url)),
+        personal: fileURLToPath(new URL('./diwali-invite-2026/index.html', import.meta.url)),
       },
     },
   },
