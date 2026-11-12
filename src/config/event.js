@@ -42,9 +42,7 @@ export const EVENT = {
    */
   contacts: [
     { name: 'Vishwas', phone: '', whatsapp: '' },
-    { name: 'Abhay', phone: '', whatsapp: '' },
     { name: 'Shivraj', phone: '', whatsapp: '' },
-    { name: 'Aman', phone: '', whatsapp: '' },
   ],
 
   // ------------------------------------------------------------- date & time
